@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+// TODO: Explain later next/fonts
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,6 +28,7 @@ export const metadata: Metadata = {
     "CineScope Movie Database is a web application that allows users to search for movies, view details about them, and create watchlists. It provides an intuitive interface for movie enthusiasts to explore and manage their movie collections.",
 };
 
+// First Server Component in the app, used to wrap all pages and components. You can add global styles, metadata, etc. here.
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -34,7 +37,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${inter.className} h-full antialiased`}
+      className={cn(
+        geistSans.variable,
+        geistMono.variable,
+        inter.variable,
+        inter.className,
+      )}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

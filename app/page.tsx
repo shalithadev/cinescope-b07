@@ -1,12 +1,15 @@
 import Footer from "@/components/shared/footer";
-import Header from "@/components/shared/header";
+import MainNav from "@/components/shared/main-nav";
+import HeroBanner from "@/components/landing/hero-banner";
 
+// Second Server Component in the app, used for the home page. You can add page-specific styles, metadata, etc. here.
 export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-12 bg-amber-200 text-black p-4">
-        Main Content Here
+      {/* Header Component */}
+      <MainNav />
+      <main className="flex-1">
+        <HeroBanner />
       </main>
       <Footer />
     </div>
