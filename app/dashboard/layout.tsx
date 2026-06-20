@@ -1,17 +1,19 @@
+import AdminHeader from "@/components/dashboard/admin-header";
+
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen flex flex-col">
-      <header className="flex-1 bg-green-200 text-black p-4">
-        Dashboard Header
+    <div className="min-h-screen flex flex-row">
+      <header className="flex-2 bg-green-200 text-black p-4">
+        Dashboard Sidebar
       </header>
-      <main className="flex-7 bg-amber-200 text-black p-4">{children}</main>
-      <footer className="flex-4 bg-sky-200 text-black p-4">
-        Dashboard Footer
-      </footer>
+      <main className="flex-10 flex flex-col text-black">
+        <AdminHeader />
+        {children}
+      </main>
     </div>
   );
 }
