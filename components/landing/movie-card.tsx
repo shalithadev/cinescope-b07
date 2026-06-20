@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import type { MovieData } from "@/lib/types";
@@ -11,15 +12,20 @@ interface MovieCardProps {
 }
 
 export default function MovieCard({ movie }: MovieCardProps) {
+  const [posterUrl, setPosterUrl] = useState(
+    movie.poster || "/placeholder.svg",
+  );
+
   return (
     <Card className="border-primary/20 hover:border-primary/50 overflow-hidden py-0 gap-0 transition-colors">
       <div className="aspect-2/3 w-full overflow-hidden">
         <Image
-          src={movie.poster}
+          src={posterUrl}
           alt={movie.title}
           width={300}
           height={450}
           className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+          onError={() => setPosterUrl("/placeholder.svg")}
         />
       </div>
       <CardContent className="p-4">
@@ -51,12 +57,19 @@ export default function MovieCard({ movie }: MovieCardProps) {
         </div>
       </CardContent>
 
-      <CardFooter>
-        <div>
-          <span></span>
+      <CardFooter className="flex justify-between p-4 pt-0 border-t-0 bg-transparent">
+        <div className="flex items-center">
+          <span className="text-primary text-sm font-medium">
+            ⭐ {movie.imdb.rating || 0}/10
+          </span>
         </div>
 
-        <Button>Details</Button>
+        <Button
+          variant="ghost"
+          className="hover:bg-accent hover:text-primary rounded-sm cursor-pointer"
+        >
+          Details
+        </Button>
       </CardFooter>
     </Card>
   );
