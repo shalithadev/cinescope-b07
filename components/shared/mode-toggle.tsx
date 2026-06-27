@@ -3,7 +3,11 @@ import { SunIcon } from "lucide-react";
 
 export function ModeToggle() {
   return (
-    <Button variant="ghost" size="icon" className="size-9">
+    <Button
+      variant="ghost"
+      size="icon"
+      className="size-9 rounded-sm cursor-pointer"
+    >
       <SunIcon />
     </Button>
   );
